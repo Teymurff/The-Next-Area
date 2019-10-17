@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Slider>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section styles {
+<style>
+    table td {
+    vertical-align: middle;
+    }
+    </style>
+}
+<h2>Index</h2>
+
+<table class="table-dark table">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Paragraph</th>
+            <th>Button</th>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var slide in Model)
+        {
+        <tr>
+            <td>
+                <img src="~/images/banner/@slide.Image" width="50" />
+            </td>
+            <td>@Html.Raw(slide.Title)</td>
+            <td>@Html.Raw(slide.Paragraph)</td>
+            <td>@Html.Raw(slide.Button)</td>
+            <td>
+                <a asp-action="Edit" class="btn btn-warning">
+                    <i class="fas fa-pencil-alt"></i>
+                </a>
+                <a asp-action="Delete" class="btn btn-danger">
+                    <i class="fas fa-trash"></i>
+                </a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts {
+<script>
+    $("img").click(function () { alert("the moon"); })
+</script>
+
+}
